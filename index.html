@@ -5,12 +5,80 @@
         <meta http-equiv="Cache-control" content="no-cache">
         <link rel="stylesheet" type="text/css" href="./assets/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     </head>
 
+    <!-- <body onload="loadFunction()"> -->
     <body>
 
-         <h1>Rock-Paper-Scissor<span> Game</span></h1>
+    	<!-- <i style="color: #fff; display: block; margin: 20% auto;" id="loader" class="fas fa-sync fa-spin fa-6x fa-fw"></i> -->
+            
+        <div class="front-page" id="front-page">
+            <h1>Rock-Paper-Scissor<span> Game</span></h1>
+            <button class="play-btn">Let's Play</button>
+        </div>
+
+        <div class="game-page" id="game-page">
+        	<div class="container">
+        	    <div class="panel-wrapper">
+				    <div class="panel-head">
+					    Player 1
+				    </div>
+				    <div class="panel-body">
+					    <div class="player1-output">
+						    <button class="player-btn" id="player1-btn">Click Here!</button>
+					    </div>
+				    </div>
+			    </div>
+     			<div class="panel-wrapper">
+     				<div class="panel-head">
+     					Player 2
+     				</div>
+     				<div class="panel-body">
+     					<div class="player2-output">
+     						<button class="player-btn" id="player2-btn">Click Here!</button>
+     					</div>
+     				</div>
+     			</div>
+    			<div class="panel-wrapper">
+    				<div class="panel-head">
+    					Player 3
+    				</div>
+    				<div class="panel-body">
+    					<div class="player3-output">
+    						<button class="player-btn" id="player3-btn">Click Here!</button>
+    					</div>
+    				</div>
+    			</div>
+	    		<div class="panel-wrapper">
+	    			<div class="panel-head">
+	    				Player 4
+	    			</div>
+	    			<div class="panel-body">
+	    				<div class="player4-output">
+	    					<button class="player-btn" id="player2-btn">Click Here!</button>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<table id="personal-details" class="details-table">
+				<tr>
+					<th scope="row">Player 1</th>
+					<th scope="row">Player 2</th>
+					<th scope="row">Player 3</th>
+					<th scope="row">Player 3</th>
+				</tr>
+				<tr>
+					<td><input type="email" name="email" placeholder="Email" disabled value="" required></td>
+					<td><input type="email" name="email" placeholder="Email" disabled value="" required></td>
+					<td><input type="email" name="email" placeholder="Email" disabled value="" required></td>
+					<td><input type="email" name="email" placeholder="Email" disabled value="" required></td>
+				</tr>
+			</table>
+		</div>
+    
+    <script type="text/javascript" src="./assets/style.js"></script>
 
     </body>
 

@@ -1,3 +1,8 @@
+*{
+margin: 0;
+padding: 0;
+}
+
 body {
     font-family: 'Titillium Web', sans-serif;
     margin: 0;
@@ -9,19 +14,148 @@ body {
     background-position: center;
 }
 
+.front-page {
+	display: none;
+	position: relative;
+    top: 25%;
+    animation:animatebottom 1s;
+}
+
+@keyframes animatebottom { 
+	from { 
+		bottom:-300px;
+		opacity:0
+	} 
+	to { 
+		bottom:0;
+		opacity:1
+	}
+}
+
 h1 {
-	font-size: 180%;
 	color: white;
-	display: inline-block;
+	display: block;
 	padding: 30px 0px;
 	padding-left: 30px;
 	opacity: 0.7;
 	transition: all 0.2s;
 	cursor: pointer;
+	text-align: center;
 }
 h1:hover {
 	opacity: 1;
 }
 h1 span {
 	font-weight: 300;
+}
+
+.play-btn {
+	border: none;
+	background: transparent;
+	padding: 15px 50px;
+	font-size: 18px;
+	font-weight: 1000;
+	color: #fff;
+	border-radius: 10px;
+	cursor: pointer;
+	opacity: 0.7;
+	display: block;
+	position: relative;
+	margin: 180px auto;
+	outline: none;
+}
+.play-btn:hover {
+	opacity: 1;
+	color: #00A5F2;
+	background: #fff;
+}
+
+.game-page {
+	padding: 20px 40px;
+	width: 900px;
+	height: 550px;
+	margin: auto;
+	top: 10%;
+	position: relative;
+	background: transparent;
+	box-shadow: 0px 1px 5px #777;
+	box-sizing: border-box;
+}
+.game-page .container {
+	display: flex;
+	width: 800px;
+	margin: auto;
+	/*top: 30%;*/
+	position: relative;
+}
+.game-page .panel-wrapper {
+	margin: auto;
+	width: 180px;
+	box-shadow: 0px 1px 5px #777;
+}
+
+.game-page .panel-wrapper .panel-head {
+	background-color: #00A5F2;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+	text-align: center;
+}
+.game-page .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+	background: #fff;
+	text-align: center;
+}
+
+.player-btn {
+	border: none;
+	font-size: 15px;
+	outline: none;
+	padding: 10px 30px;
+	background: #fff;
+	color: #00A5F2;
+	cursor: pointer;
+	border-radius: 8px;
+}
+.player-btn:hover {
+	background: #00A5F2;
+	color: #fff;
+}
+
+.details-table {
+	border-collapse: collapse;
+	margin: 20px auto;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-table tr:nth-child(odd) {
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
+
+.details-table th {
+	padding: 20px 40px;
+	text-align: center;
+	font-size: 18px;
+	background-color: #00a591;
+	color: #fff;
+	font-weight: 400;
+}
+
+.details-table td {
+	font-size: 16px;
+	padding: 15px;
+	background: #fff;
+}
+
+.details-table input {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	font-weight: 600px;
+	background: none;
+	border: none;
+	color: #00A5F2;
+	width: 100%;
+	text-align: center;
 }
