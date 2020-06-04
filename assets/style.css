@@ -14,13 +14,15 @@ body {
     background-position: center;
 }
 
-.front-page {
-	display: none;
-	position: relative;
-    top: 25%;
-    animation:animatebottom 1s;
+/*Animations*/
+@keyframes opac {
+	from {
+		opacity:0;
+	} 
+	to {
+		opacity:1;
+	}
 }
-
 @keyframes animatebottom { 
 	from { 
 		bottom:-300px;
@@ -31,12 +33,35 @@ body {
 		opacity:1
 	}
 }
+@keyframes animatezoom {
+	from {
+		transform:scale(0);
+	} 
+	to {
+	    transform:scale(1);
+	}
+}
+@keyframes animatetop {
+	from {
+		top:-300px;
+		opacity:0;
+	} 
+	to {
+		top:0;
+		opacity:1;
+	}
+}
+
+.front-page {
+	display: none;
+	position: relative;
+    animation:animatebottom 1s;
+}
 
 h1 {
 	color: white;
 	display: block;
-	padding: 30px 0px;
-	padding-left: 30px;
+	padding-top: 30px;
 	opacity: 0.7;
 	transition: all 0.2s;
 	cursor: pointer;
@@ -49,7 +74,96 @@ h1 span {
 	font-weight: 300;
 }
 
-.play-btn {
+.front-page .row {
+	margin: 120px auto;
+	background: #00A5F2;
+	box-shadow: 0px 1px 5px #777;
+	box-sizing: border-box;
+	width: 660px;
+	padding: 15px 0px;
+	display: none;
+	animation:animatezoom 1s;
+}
+
+.front-page .row .player-name-close-btn {
+	float: right;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: red;
+	font-size: 32px;
+	cursor: pointer;
+	margin-right: 20px;
+	opacity: 0.7;
+}
+.front-page .row .player-name-close-btn:hover {
+	opacity: 1;
+}
+
+.front-page .row:after {
+    content: "";	
+    display: table;
+    clear: both;
+}
+
+.front-page .row .col{
+    float: left;
+    width: 50%;
+    margin: auto;
+}
+
+.front-page .row .col.adjust {
+	margin-top: 35px;
+}
+
+.front-page .row .col label {
+	margin: 20px 40px;
+	color: #fff;
+	font-weight: 700;
+}
+
+.front-page .row .col input {
+	margin: 20px 40px;
+	width: 250px;
+	height: 30px;
+	border: none;
+	outline: none;
+	font-size: 15px;
+	color: #fff;
+	background: transparent;
+	font-weight: 600px;
+}
+.front-page .row .col input:focus {
+	border-bottom: 2px solid #fff;
+}
+/*Placeholder Animation*/
+::-webkit-input-placeholder { /* Edge */
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+::placeholder {
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+
+.front-page p {
+	color: #fff;
+	font: 12px;
+	animation:fading 1s;
+	text-align: center;
+	margin: 10px 0px;
+}
+
+.front-page .play-btn,
+.front-page .row .player-name-save-btn,
+.front-page p .player-name-btn {
 	border: none;
 	background: transparent;
 	padding: 15px 50px;
@@ -61,10 +175,17 @@ h1 span {
 	opacity: 0.7;
 	display: block;
 	position: relative;
-	margin: 180px auto;
+	margin: auto;
+	margin-top: 10px;
 	outline: none;
+	animation:fading 1s;
 }
-.play-btn:hover {
+.front-page .play-btn {
+	margin-top: 300px;
+}
+.front-page .play-btn:hover,
+.front-page .row .player-name-save-btn:hover,
+.front-page p .player-name-btn:hover {
 	opacity: 1;
 	color: #00A5F2;
 	background: #fff;
@@ -72,6 +193,7 @@ h1 span {
 
 .game-page {
 	padding: 20px 40px;
+	top: 15%;
 	width: 1100px;
 	margin: auto;
 	position: relative;
@@ -79,7 +201,7 @@ h1 span {
 	box-shadow: 0px 1px 5px #777;
 	box-sizing: border-box;
 	display: none;
-	top: 20%;
+	animation:opac 2s;
 }
 .game-page .container {
 	display: flex;
@@ -87,27 +209,27 @@ h1 span {
 	margin: auto;
 	position: relative;
 }
-.game-page .panel-wrapper {
+.game-page .container .panel-wrapper {
 	margin: auto;
 	width: 220px;
 	box-shadow: 0px 1px 5px #777;
 }
 
-.game-page .panel-wrapper .panel-head {
+.game-page .container .panel-wrapper .panel-head {
 	background-color: #00A5F2;
 	color: #fff;
 	padding: 10px 10px;
 	border: 1px solid #00A5F2;
 	text-align: center;
 }
-.game-page .panel-wrapper .panel-body {
+.game-page .container .panel-wrapper .panel-body {
 	padding: 20px 10px;
 	font-size: 80%;
 	background: #fff;
 	text-align: center;
 }
 
-.player-btn {
+.game-page .container .panel-wrapper .panel-body .player-btn {
 	border: none;
 	font-size: 15px;
 	outline: none;
@@ -118,29 +240,51 @@ h1 span {
 	border-radius: 8px;
 	margin: auto;
 }
-.player-btn:hover {
+.game-page .container .panel-wrapper .panel-body .player-btn:hover {
 	background: #00A5F2;
 	color: #fff;
 }
 
-h2 {
+.game-page .play-again-btn {
+	border: none;
+	font-size: 15px;
+	outline: none;
+	padding: 10px 30px;
+	background: transparent;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 8px;
+	margin: 15px auto;
+	display: none;
+}
+.game-page .play-again-btn:hover {
+	background: #fff;
+	color: #00A5F2;
+}
+
+.game-page .current-result-page {
+	position:relative;
+	animation:animatetop 1s;
+}
+
+.game-page .current-result-page h2 {
 	text-align: center;
 	color: #fff;
 	margin: 40px 0px 0px 0px;
 }
 
-.details-table {
+.game-page .current-result-page .details-table {
 	border-collapse: collapse;
 	margin: 20px auto 0px auto;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.details-table tr:nth-child(odd) {
+.game-page .current-result-page .details-table tr:nth-child(odd) {
 	border-top: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
 }
 
-.details-table th {
+.game-page .current-result-page .details-table th {
 	padding: 15px;
 	text-align: center;
 	font-size: 18px;
@@ -149,13 +293,13 @@ h2 {
 	font-weight: 400;
 }
 
-.details-table td {
+.game-page .current-result-page .details-table td {
 	font-size: 16px;
 	padding: 15px;
 	background: #fff;
 }
 
-.details-table input {
+.game-page .current-result-page .details-table input {
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
 	font-weight: 600px;
@@ -164,20 +308,6 @@ h2 {
 	color: #00A5F2;
 	width: 100%;
 	text-align: center;
-}
-
-p {
-	margin-top: 15px;
-	text-align: center;
-}
-p a {
-	text-decoration: none;
-	color: #fff;
-	padding: 10px 40px;
-}
-p a:hover {
-	color: #00A5F2;
-	background: #fff;
 }
 
 .result-page {

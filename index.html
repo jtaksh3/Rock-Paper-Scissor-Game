@@ -16,16 +16,36 @@
     	<i style="color: #fff; display: none; margin: 20% auto;" id="loader1" class="fas fa-spinner fa-pulse fa-6x fa-fw"></i>
     	<i style="color: #fff; display: none; margin: 20% auto;" id="loader2" class="fas fa-stroopwafel fa-spin fa-6x fa-fw"></i>
             
+        <h1>Rock-Paper-Scissor<span> Game</span></h1>
         <div class="front-page" id="front-page">
-            <h1>Rock-Paper-Scissor<span> Game</span></h1>
-            <button class="play-btn">Let's Play</button>
+            <p>Want to Enter Player Name Manually <button class="player-name-btn" id="player-name-btn">Click Here</button></p>
+            <div class="row" id="row">
+                <button title="Close" class="player-name-close-btn" id="player-name-close-btn">&times;</button>
+                <div class='col adjust'>
+                    <label>First Player Name</label>
+                    <input type="text" placeholder="Default (Player 1)" id="player1-name">
+                </div>
+                <div class="col">
+                    <label>Second Player Name</label>
+                    <input type="text" placeholder="Default (Player 2)" id="player2-name">
+                </div>
+                <div class="col">
+                    <label>Third Player Name</label>
+                    <input type="text" placeholder="Default (Player 3)" id="player3-name">
+                </div>
+                <div class="col">
+                    <label>Fourth Player Name</label>
+                    <input type="text" placeholder="Default (Player 4)" id="player4-name">
+                </div>
+                <button class="player-name-save-btn" id="player-name-save-btn">Save</button>
+            </div>
+            <button class="play-btn" id="play-btn">Let's Play</button>
         </div>
 
         <div class="game-page" id="game-page">
         	<div class="container">
         	    <div class="panel-wrapper">
-				    <div class="panel-head">
-					    Player 1
+				    <div class="panel-head" id="game-player1-name">
 				    </div>
 				    <div class="panel-body">
 					    <div class="player1-output">
@@ -35,8 +55,7 @@
 				    </div>
 			    </div>
      			<div class="panel-wrapper">
-     				<div class="panel-head">
-     					Player 2
+     				<div class="panel-head" id="game-player2-name">
      				</div>
      				<div class="panel-body">
      					<div class="player2-output">
@@ -46,8 +65,7 @@
      				</div>
      			</div>
     			<div class="panel-wrapper">
-    				<div class="panel-head">
-    					Player 3
+    				<div class="panel-head" id="game-player3-name">
     				</div>
     				<div class="panel-body">
     					<div class="player3-output">
@@ -57,8 +75,7 @@
     				</div>
     			</div>
 	    		<div class="panel-wrapper">
-	    			<div class="panel-head">
-	    				Player 4
+	    			<div class="panel-head" id="game-player4-name">
 	    			</div>
 	    			<div class="panel-body">
 	    				<div class="player4-output">
@@ -68,7 +85,8 @@
 	    			</div>
 	    		</div>
 	    	</div>
-	    	<div id="current-result-page" style="display: none;">
+	    	<button class="play-again-btn" id="play-again-btn">Play Again</button>
+	    	<div id="current-result-page" class="current-result-page" style="display: none;">
 	    	    <h2>Results</h2>
 	    	    <table id="personal-details" class="details-table">
 			  	    <tr>
@@ -78,10 +96,10 @@
 			    		<th scope="row">Player 4</th>
 			    	</tr>
 		      		<tr>
-		    	   		<td><input type="text" name="player1" placeholder="Player 1" disabled value="" required></td>
-		    	    	<td><input type="text" name="player2" placeholder="Player 2" disabled value="" required></td>
-		    	    	<td><input type="text" name="player3" placeholder="Player 3" disabled value="" required></td>
-		    	    	<td><input type="text" name="player4" placeholder="Player 4" disabled value="" required></td>
+		    	   		<td><input type="text" id="player1" placeholder="Player 1" disabled value="" required></td>
+		    	    	<td><input type="text" id="player2" placeholder="Player 2" disabled value="" required></td>
+		    	    	<td><input type="text" id="player3" placeholder="Player 3" disabled value="" required></td>
+		    	    	<td><input type="text" id="player4" placeholder="Player 4" disabled value="" required></td>
 		    	    </tr>
 		    	</table>
 		    	<table id="personal-details" class="details-table">

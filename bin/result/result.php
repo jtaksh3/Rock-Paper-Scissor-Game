@@ -12,4 +12,9 @@ class Result
     private $player4 = "Player4";
     private $players_result = "Players_Result";
 
+    function __construct($db)
+    {
+        $this->conn = $db;
+    }
+
 }
