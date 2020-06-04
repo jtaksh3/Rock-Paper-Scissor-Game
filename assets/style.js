@@ -82,11 +82,11 @@ function showGamePage() {
 $('#player1-btn').on('click',function(){
 	$('#player1-btn').css('display', 'none');
 	player1_value = Math.floor(Math.random() * (max - min + 1)) + min;
-	if(player1_value === 0) {
+	if(player1_value == 0) {
 		$('#player1-img').attr('src', './assets/img/paper.jpg');
 		player1_img = 'paper';
 	}
-	else if(player1_value === 1) {
+	else if(player1_value == 1) {
 		$('#player1-img').attr('src', './assets/img/rock.jpg');
 		player1_img = 'rock';
 	}
@@ -101,11 +101,11 @@ $('#player1-btn').on('click',function(){
 $('#player2-btn').on('click',function(){
 	$('#player2-btn').css('display', 'none');
 	player2_value = Math.floor(Math.random() * (max - min + 1)) + min;
-	if(player2_value === 0) {
+	if(player2_value == 0) {
 		$('#player2-img').attr('src', './assets/img/paper.jpg');
 		player2_img = 'paper';
 	}
-	else if(player2_value === 1) {
+	else if(player2_value == 1) {
 		$('#player2-img').attr('src', './assets/img/rock.jpg');
 		player2_img = 'rock';
 	}
@@ -120,11 +120,11 @@ $('#player2-btn').on('click',function(){
 $('#player3-btn').on('click',function(){
 	$('#player3-btn').css('display', 'none');
 	player3_value = Math.floor(Math.random() * (max - min + 1)) + min;
-	if(player3 === 0) {
+	if(player3_value == 0) {
 		$('#player3-img').attr('src', './assets/img/paper.jpg');
 		player3_img = 'paper';
 	}
-	else if(player3_value === 1) {
+	else if(player3_value == 1) {
 		$('#player3-img').attr('src', './assets/img/rock.jpg');
 		player3_img = 'rock';
 	}
@@ -137,53 +137,53 @@ $('#player3-btn').on('click',function(){
 });
 
 function calculateScores(p1, p2, p3, p4) {
-	var scoresArray = new Array();
-	if(p1 === 0) {
-		if(p2 ==== (p1 + 1))
+	let scoresArray = new Array();
+	if(p1 == 0) {
+		if(p2 == 1)
 			scoresArray[0] = 1;
 		else
 			scoresArray[0] = 0;
 
-		if(p3 ==== (p1 + 1))
+		if(p3 == 1)
 			scoresArray[1] = 1;
 		else
 			scoresArray[1] = 0;
 
-		if(p4 ==== (p1 + 1))
+		if(p4 == 1)
 			scoresArray[2] = 1;
 		else
 			scoresArray[2] = 0;
 	}
 
-	else if(p1 === 1) {
-		if(p2 ==== (p1 + 1))
+	else if(p1 == 1) {
+		if(p2 == 2)
 			scoresArray[0] = 1;
 		else
 			scoresArray[0] = 0;
 
-		if(p3 ==== (p1 + 1))
+		if(p3 == 2)
 			scoresArray[1] = 1;
 		else
 			scoresArray[1] = 0;
 
-		if(p4 ==== (p1 + 1))
+		if(p4 == 2)
 			scoresArray[2] = 1;
 		else
 			scoresArray[2] = 0;
 	}
 
 	else {
-		if(p2 ==== (p1 - 1))
+		if(p2 == 0)
 			scoresArray[0] = 1;
 		else
 			scoresArray[0] = 0;
 
-		if(p3 ==== (p1 - 1))
+		if(p3 == 0)
 			scoresArray[1] = 1;
 		else
 			scoresArray[1] = 0;
 
-		if(p4 ==== (p1 - 1))
+		if(p4 == 0)
 			scoresArray[2] = 1;
 		else
 			scoresArray[2] = 0;
@@ -194,11 +194,11 @@ function calculateScores(p1, p2, p3, p4) {
 $('#player4-btn').on('click',function(){
 	$('#player4-btn').css('display', 'none');
 	player4_value = Math.floor(Math.random() * (max - min + 1)) + min;
-	if(player4_value === 0) {
+	if(player4_value == 0) {
 		$('#player4-img').attr('src', './assets/img/paper.jpg');
 		player4_img = 'paper';
 	}
-	else if(player4_value === 1) {
+	else if(player4_value == 1) {
 		$('#player4-img').attr('src', './assets/img/rock.jpg');
 		player4_img = 'rock';
 	}
@@ -206,8 +206,6 @@ $('#player4-btn').on('click',function(){
 		$('#player4-img').attr('src', './assets/img/scissor.jpg');
 		player4_img = 'scissor';
 	}
-	
-	// $('#play-again-btn').css('display', 'block');
 
 	var player1_array = calculateScores(player1_value, player2_value, player3_value, player4_value);
 	var player2_array = calculateScores(player2_value, player1_value, player3_value, player4_value);
@@ -215,19 +213,22 @@ $('#player4-btn').on('click',function(){
 	var player4_array = calculateScores(player4_value, player1_value, player2_value, player3_value);
 
 
-    //AJAX request for signup form
+    //AJAX request
     $.ajax({
         url: "./bin/result/process-result.php",
-        method: "POST",
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify({
-            player1_value: player1_value,
-            player2_value: player2_value,
-            player3_value: player3_value,
-            player4_value: player4_value
-        }),
+        type: "POST",
+        data: {
+            player1_img: player1_img,
+            player2_img: player2_img,
+            player3_img: player3_img,
+            player4_img: player4_img,
+            player1_array: player1_array,
+            player2_array: player2_array,
+            player3_array: player3_array,
+            player4_array: player4_array
+         },
         success: function(response) {
+        	$('#play-again-btn').css('display', 'block');
         }
     });
 });
