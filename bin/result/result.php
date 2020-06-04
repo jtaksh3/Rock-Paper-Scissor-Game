@@ -11,10 +11,16 @@ class Result
     private $player3 = "Player3";
     private $player4 = "Player4";
     private $players_result = "Players_Result";
+    private $uniqueID;
 
     function __construct($db)
     {
         $this->conn = $db;
+    }
+
+    public function setUniqueID($uniqueID) 
+    {
+    	$this->uniqueID = $uniqueID;
     }
 
 }
