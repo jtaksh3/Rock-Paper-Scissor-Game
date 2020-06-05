@@ -1,4 +1,4 @@
-
+//GLOBAL VARIABLES
 var myVar;
 var min = Math.ceil(0);
 var max = Math.floor(2);
@@ -15,15 +15,26 @@ var player2_name = 'Player 2';
 var player3_name = 'Player 3';
 var player4_name = 'Player 4';
 
-function loadFunction() {
-  myVar = setTimeout(showPage, 2000);
+//LOADERS
+function loadFunction1() {
+  myVar = setTimeout(showIndexPage, 2000);
 }
 
-function showPage() {
-  document.getElementById("loader").style.display = "none";
+function loadFunction2() {
+  myVar = setTimeout(showGamePage, 2000);
+}
+
+function showIndexPage() {
+  document.getElementById("loader1").style.display = "none";
   document.getElementById("front-page").style.display = "block";
 }
 
+function showGamePage() {
+  document.getElementById("loader2").style.display = "none";
+  document.getElementById("game-page").style.display = "block";
+}
+
+//OPENS MANUAL PLAYER NAME FORM
 $('#player-name-btn').on('click',function(){
 	$('#player-name-btn').css('display', 'none');
 	$('.front-page p').css('display', 'none');
@@ -31,6 +42,7 @@ $('#player-name-btn').on('click',function(){
 	$('#row').css('display', 'block');
 });
 
+//SAVES MANUAL PLAYER NAME FORM
 $('#player-name-save-btn').on('click',function(){
 
 	if($.trim($('#player1-name').val()))
@@ -50,6 +62,7 @@ $('#player-name-save-btn').on('click',function(){
 
 });
 
+//CLOSES MANUAL PLAYER NAME FORM
 $('#player-name-close-btn').on('click',function(){
 	
 	$('#player1-name').val(player1_name);
@@ -63,22 +76,27 @@ $('#player-name-close-btn').on('click',function(){
 	$('#row').css('display', 'none');
 });
 
-
+//REDIRECTS TO THE GAME PAGE BY SAVING PLAYER DETAILS AND GENERATES UNIQUEID
 $('#play-btn').on('click',function(){
-	$('#front-page').css('display', 'none');
-	$('#loader1').css('display', 'block');
-	$('#game-player1-name').html('' + player1_name);
-	$('#game-player2-name').html('' + player2_name);
-	$('#game-player3-name').html('' + player3_name);
-	$('#game-player4-name').html('' + player4_name);
-	myVar = setTimeout(showGamePage, 2000);
+
+	$.ajax({
+        url: "./bin/user/create-session.php",
+        type: "POST",
+        data: {
+            player1_name: player1_name,
+            player2_name: player2_name,
+            player3_name: player3_name,
+            player4_name: player4_name
+        },
+        success: function(response) {
+        	response = $.trim(response);
+        	if (response == 'Success')
+        	    window.location.href = "./game.php";
+        }
+    });
 });
 
-function showGamePage() {
-  document.getElementById("loader1").style.display = "none";
-  document.getElementById("game-page").style.display = "block";
-}
-
+//GENERATES THE OUTPUT OF PLAYER 1
 $('#player1-btn').on('click',function(){
 	$('#player1-btn').css('display', 'none');
 	player1_value = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -98,6 +116,7 @@ $('#player1-btn').on('click',function(){
 	$('#player2-btn').css('display', 'block');
 });
 
+//GENERATES THE OUTPUT OF PLAYER 2
 $('#player2-btn').on('click',function(){
 	$('#player2-btn').css('display', 'none');
 	player2_value = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -117,6 +136,7 @@ $('#player2-btn').on('click',function(){
 	$('#player3-btn').css('display', 'block');
 });
 
+//GENERATES THE OUTPUT OF PLAYER 3
 $('#player3-btn').on('click',function(){
 	$('#player3-btn').css('display', 'none');
 	player3_value = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -136,6 +156,7 @@ $('#player3-btn').on('click',function(){
 	$('#player4-btn').css('display', 'block');
 });
 
+// FUNCTION TO CALCULATE SCORES OF PLAYERS
 function calculateScores(p1, p2, p3, p4) {
 	let scoresArray = new Array();
 	if(p1 == 0) {
@@ -191,6 +212,7 @@ function calculateScores(p1, p2, p3, p4) {
 	return scoresArray;
 }
 
+//GENERATES THE OUTPUT OF PLAYER 4
 $('#player4-btn').on('click',function(){
 	$('#player4-btn').css('display', 'none');
 	player4_value = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -213,9 +235,9 @@ $('#player4-btn').on('click',function(){
 	var player4_array = calculateScores(player4_value, player1_value, player2_value, player3_value);
 
 
-    //AJAX request
+    //AJAX request to insert the result
     $.ajax({
-        url: "./bin/result/process-result.php",
+        url: "./bin/user/insert-result.php",
         type: "POST",
         data: {
             player1_img: player1_img,
@@ -228,7 +250,31 @@ $('#player4-btn').on('click',function(){
             player4_array: player4_array
          },
         success: function(response) {
-        	$('#play-again-btn').css('display', 'block');
+        	response = $.trim(response);
+        	if(response == 'Success') {
+        	    $('#play-again-btn').css('display', 'block');
+             	$('#current-result-page').css('display', 'block');
+            }
         }
     });
+
+    $.ajax({
+        url: "./bin/user/get-recent-scores.php",
+        method: "GET",
+        dataType: "json",
+        contentType: "application/json",
+        data: {
+          getRecentScores: true
+        },
+        success: function(response) {
+
+            if (response.status == 1) {
+                var result = response.data.result;
+			    var player1_result = response.data.player1_result;
+			    var player2_result = response.data.player2_result;
+			    var player3_result = response.data.player3_result;
+			    var player4_result = response.data.player4_result;
+            }
+  }
+});
 });

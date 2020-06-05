@@ -1,7 +1,15 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/config/database.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/result/result.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/config/database.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/user/user.php';
+
+    session_start();
+    if (!isset($_SESSION['uniqueID']) || !isset($_SESSION['player1_name']) || !isset($_SESSION['player2_name'])
+    || !isset($_SESSION['player3_name']) || !isset($_SESSION['player4_name'])) {
+
+        //If Session not created
+        exit('Unauthorized');
+    }
 
     
     if (isset($_POST['player1_img']) && isset($_POST['player2_img']) && isset($_POST['player3_img']) 
@@ -18,7 +26,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/result/re
         $player3_array = $_POST['player3_array'];
         $player4_array = $_POST['player4_array'];
 
-        $uniqueID = uniqid();
+        $uniqueID = $_SESSION['uniqueID'];
 
         
         $db = new Database();
@@ -26,7 +34,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/result/re
         $userDB = $db->getUserDBConnection();
 
         
-        $user = new Result($userDB);
+        $user = new User($userDB);
 
         
         $user->setUniqueID($uniqueID);
@@ -37,9 +45,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/result/re
         $response2 = $user->playerScorecard($player1_array, $player2_array, $player3_array, $player4_array);
 
         if($response1 && $response2)
-            exit('Hello');
+            exit('Success');
         else
-            exit('Na Bhai');
+            exit('Failed');
     
     }
+
+    exit('Failed');
+
 ?>
