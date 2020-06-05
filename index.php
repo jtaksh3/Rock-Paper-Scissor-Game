@@ -13,7 +13,8 @@ if (isset($_SESSION['uniqueID']) && isset($_SESSION['player1_name']) && isset($_
 <html>
 
     <head>
-
+         
+        <title>Home</title>
         <meta http-equiv="Cache-control" content="no-cache">
         <link rel="stylesheet" type="text/css" href="./assets/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

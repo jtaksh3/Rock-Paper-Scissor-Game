@@ -1,7 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['uniqueID']) || !isset($_SESSION['player1_name']) || !isset($_SESSION['player2_name'])
+    || !isset($_SESSION['player3_name']) || !isset($_SESSION['player4_name'])) {
+
+    //If Session not created
+    header('Location: ./index.php'); //Redirect to Index page
+    exit();
+}
+
+?>
+
 <html>
 
     <head>
-
+        
+        <title>Results</title>
         <meta http-equiv="Cache-control" content="no-cache">
         <link rel="stylesheet" type="text/css" href="./assets/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

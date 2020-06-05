@@ -18,7 +18,8 @@ $player4_name = $_SESSION['player4_name'];
 <html>
 
     <head>
-
+        
+        <title>GamePlay</title>
         <meta http-equiv="Cache-control" content="no-cache">
         <link rel="stylesheet" type="text/css" href="./assets/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
