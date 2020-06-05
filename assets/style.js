@@ -67,12 +67,6 @@ $('#player-name-save-btn').on('click',function(){
     $('.front-page p').css('display', 'block');
 	$('#play-btn').css('display', 'block');
 	$('#row').css('display', 'none');
-
-	sessionStorage.setItem("p1", player1_name);
-	sessionStorage.setItem("p2", player2_name);
-	sessionStorage.setItem("p3", player3_name);
-	sessionStorage.setItem("p4", player4_name);
-
 });
 
 //CLOSES MANUAL PLAYER NAME FORM
@@ -103,13 +97,22 @@ $('#play-btn').on('click',function(){
         },
         success: function(response) {
         	response = $.trim(response);
-        	if (response == 'Success')
+        	if (response == 'Success') {
+
+	            sessionStorage.setItem("p1", player1_name);
+	            sessionStorage.setItem("p2", player2_name);
+	            sessionStorage.setItem("p3", player3_name);
+	            sessionStorage.setItem("p4", player4_name);
         	    window.location.href = "./game.php";
+        	}
+        },
+        error: function(request, error) {
+        	$('h1').html('hello');
         }
     });
 });
 
-$('#game-close-btn').on('click',function(){
+$('#game-close-btn').on('click',function() {
 	$.ajax({
 		url: "./bin/user/destroy-session.php",
 		method: "POST",
@@ -282,7 +285,7 @@ $('#player4-btn').on('click',function(){
             }
         }
     });
-
+       //AJAX request to retrieve the recent result
     $.ajax({
         url: "./bin/user/get-recent-result.php",
         method: "GET",
@@ -325,6 +328,7 @@ $('#player4-btn').on('click',function(){
     });
 });
 
+//Play Again Button
 $('#play-again-btn').on('click',function() {
 
 	$('#player1-img').attr('src', '');
@@ -348,11 +352,7 @@ $('#result-close-btn').on('click',function(){
     window.location.href = "./game.php";
 });
 
-player1_name = $('#hidden1').val();
-player2_name = $('#hidden2').val();
-player3_name = $('#hidden3').val();
-player4_name = $('#hidden4').val();
-
+//AJAX request to retrieve the result
 $.ajax({
         url: "./bin/user/get-all-result.php",
         method: "GET",
