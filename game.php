@@ -40,7 +40,7 @@ $player4_name = $_SESSION['player4_name'];
 				    <div class="panel-body">
 					    <div class="player1-output">
 					    	<img src="" id="player1-img" />
-						    <button class="player-btn" id="player1-btn">Click Here!</button>
+						    <button class="player-btn" id="player1-btn"><?php echo $player1_name; ?>'s Turn</button>
 					    </div>
 				    </div>
 			    </div>
@@ -51,7 +51,7 @@ $player4_name = $_SESSION['player4_name'];
      				<div class="panel-body">
      					<div class="player2-output">
      						<img id="player2-img" />
-     						<button class="player-btn" style="display: none;" id="player2-btn">Click Here!</button>
+     						<button class="player-btn" style="display: none;" id="player2-btn"><?php echo $player2_name; ?>'s Turn</button>
      					</div>
      				</div>
      			</div>
@@ -62,7 +62,7 @@ $player4_name = $_SESSION['player4_name'];
     				<div class="panel-body">
     					<div class="player3-output">
     						<img id="player3-img" />
-    						<button class="player-btn" style="display: none;" id="player3-btn">Click Here!</button>
+    						<button class="player-btn" style="display: none;" id="player3-btn"><?php echo $player3_name; ?>'s Turn</button>
     					</div>
     				</div>
     			</div>
@@ -73,13 +73,13 @@ $player4_name = $_SESSION['player4_name'];
 	    			<div class="panel-body">
 	    				<div class="player4-output">
 	    					<img id="player4-img" />
-	    					<button class="player-btn" style="display: none;" id="player4-btn">Click Here!</button>
+	    					<button class="player-btn" style="display: none;" id="player4-btn"><?php echo $player4_name; ?>'s Turn</button>
 	    				</div>
 	    			</div>
 	    		</div>
 	    	</div>
-	    	<button class="play-again-btn" id="play-again-btn">Play Again</button>
-	    	<div id="current-result-page" class="current-result-page" style="display: none;">
+	    	<button class="play-again-btn" style="display: none;" id="play-again-btn">Play Again</button>
+	    	<div id="current-result-section" class="current-result-section" style="display: none;">
 	    	    <h2>Results</h2>
 	    	    <table id="personal-details" class="details-table">
 			  	    <tr>
@@ -95,6 +95,7 @@ $player4_name = $_SESSION['player4_name'];
 		    	    	<td><input type="text" id="player4" placeholder="Player 4" disabled value="" required></td>
 		    	    </tr>
 		    	</table>
+		    	<h2>Leaderboard</h2>
 		    	<table id="personal-details" class="details-table">
 		    	    	<tr>
 				    	<th scope="row">Totals</th>
@@ -145,8 +146,8 @@ $player4_name = $_SESSION['player4_name'];
 			    		<td><input type="text" value="-" disabled required></td>
 			    	</tr>
 			    </table>
-			    <button class="play-btn">All Results</button>
 		    </div>
+		    <button class="all-results-btn" id="all-results-btn">All Results</button>
 		</div>
 
 		<script type="text/javascript" src="./assets/style.js"></script>

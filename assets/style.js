@@ -24,6 +24,10 @@ function loadFunction2() {
   myVar = setTimeout(showGamePage, 2000);
 }
 
+function loadFunction3() {
+  myVar = setTimeout(showResultsPage, 2000);
+}
+
 function showIndexPage() {
   document.getElementById("loader1").style.display = "none";
   document.getElementById("front-page").style.display = "block";
@@ -32,6 +36,11 @@ function showIndexPage() {
 function showGamePage() {
   document.getElementById("loader2").style.display = "none";
   document.getElementById("game-page").style.display = "block";
+}
+
+function showResultsPage() {
+  document.getElementById("loader3").style.display = "none";
+  document.getElementById("result-page").style.display = "block";
 }
 
 //OPENS MANUAL PLAYER NAME FORM
@@ -253,7 +262,7 @@ $('#player4-btn').on('click',function(){
         	response = $.trim(response);
         	if(response == 'Success') {
         	    $('#play-again-btn').css('display', 'block');
-             	$('#current-result-page').css('display', 'block');
+             	$('#current-result-section').css('display', 'block');
             }
         }
     });
@@ -274,7 +283,47 @@ $('#player4-btn').on('click',function(){
 			    var player2_result = response.data.player2_result;
 			    var player3_result = response.data.player3_result;
 			    var player4_result = response.data.player4_result;
+
+			    $('#player1').val(result.Player1);
+			    $('#player2').val(result.Player2);
+			    $('#player3').val(result.Player3);
+			    $('#player4').val(result.Player4);
+
+			    $('#1player2').val(player1_result.Player2);
+			    $('#1player3').val(player1_result.Player3);
+			    $('#1player4').val(player1_result.Player4);
+
+			    $('#2player1').val(player2_result.Player1);
+			    $('#2player3').val(player2_result.Player3);
+			    $('#2player4').val(player2_result.Player4);
+
+			    $('#3player1').val(player3_result.Player1);
+			    $('#3player2').val(player3_result.Player2);
+			    $('#3player4').val(player3_result.Player4);
+
+			    $('#4player1').val(player4_result.Player1);
+			    $('#4player2').val(player4_result.Player2);
+			    $('#4player3').val(player4_result.Player3);
             }
-  }
+        }
+    });
 });
+
+$('#play-again-btn').on('click',function() {
+
+	$('#player1-img').attr('src', '');
+	$('#player2-img').attr('src', '');
+	$('#player3-img').attr('src', '');
+	$('#player4-img').attr('src', '');
+
+	$('#player1-btn').css('display', 'block');
+
+	$('#current-result-section').css('display', 'none');
+
+	$('#play-again-btn').css('display', 'none');
+
+});
+
+$('#all-results-btn').on('click',function() {
+	window.location.href = './results.php';
 });

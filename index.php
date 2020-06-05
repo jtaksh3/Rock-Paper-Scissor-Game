@@ -25,8 +25,6 @@ if (isset($_SESSION['uniqueID']) && isset($_SESSION['player1_name']) && isset($_
     <body>
 
     	<i style="color: #fff; display: block; margin: 20% auto;" id="loader1" class="fas fa-sync fa-spin fa-6x fa-fw"></i>
-    	
-    	<i style="color: #fff; display: none; margin: 20% auto;" id="loader3" class="fas fa-stroopwafel fa-spin fa-6x fa-fw"></i>
             
         <h1>Rock-Paper-Scissor<span> Game</span></h1>
         <div class="front-page" id="front-page">
@@ -53,11 +51,6 @@ if (isset($_SESSION['uniqueID']) && isset($_SESSION['player1_name']) && isset($_
             </div>
             <button class="play-btn" id="play-btn">Let's Play</button>
         </div>
-
-        
-
-		<div class="result-page" id="result-page">
-		</div>
     
     <script type="text/javascript" src="./assets/style.js"></script>
 

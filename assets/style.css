@@ -245,7 +245,8 @@ h1 span {
 	color: #fff;
 }
 
-.game-page .play-again-btn {
+.game-page .play-again-btn,
+.game-page .all-results-btn {
 	border: none;
 	font-size: 15px;
 	outline: none;
@@ -255,36 +256,37 @@ h1 span {
 	cursor: pointer;
 	border-radius: 8px;
 	margin: 15px auto;
-	display: none;
+	display: block;
 }
-.game-page .play-again-btn:hover {
+.game-page .play-again-btn:hover,
+.game-page .all-results-btn:hover {
 	background: #fff;
 	color: #00A5F2;
 }
 
-.game-page .current-result-page {
+.game-page .current-result-section {
 	position:relative;
 	animation:animatetop 1s;
 }
 
-.game-page .current-result-page h2 {
+.game-page .current-result-section h2 {
 	text-align: center;
 	color: #fff;
 	margin: 40px 0px 0px 0px;
 }
 
-.game-page .current-result-page .details-table {
+.game-page .current-result-section .details-table {
 	border-collapse: collapse;
 	margin: 20px auto 0px auto;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.game-page .current-result-page .details-table tr:nth-child(odd) {
+.game-page .current-result-section .details-table tr:nth-child(odd) {
 	border-top: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
 }
 
-.game-page .current-result-page .details-table th {
+.game-page .current-result-section .details-table th {
 	padding: 15px;
 	text-align: center;
 	font-size: 18px;
@@ -293,13 +295,13 @@ h1 span {
 	font-weight: 400;
 }
 
-.game-page .current-result-page .details-table td {
+.game-page .current-result-section .details-table td {
 	font-size: 16px;
 	padding: 15px;
 	background: #fff;
 }
 
-.game-page .current-result-page .details-table input {
+.game-page .current-result-section .details-table input {
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
 	font-weight: 600px;
