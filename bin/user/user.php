@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/config/database.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/Rock-Paper-Scissor-Game/bin/config/database.php';
 
 class User
 {

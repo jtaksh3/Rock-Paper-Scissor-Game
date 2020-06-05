@@ -151,11 +151,6 @@ $player4_name = $_SESSION['player4_name'];
 		    <button class="all-results-btn" id="all-results-btn">All Results</button>
 		</div>
 
-		<input type="hidden" id="hidden1" value="<?php echo $player1_name; ?>">
-        <input type="hidden" id="hidden1" value="<?php echo $player2_name; ?>">
-        <input type="hidden" id="hidden1" value="<?php echo $player3_name; ?>">
-        <input type="hidden" id="hidden1" value="<?php echo $player4_name; ?>">
-
 		<script type="text/javascript" src="./assets/style.js"></script>
 
     </body>

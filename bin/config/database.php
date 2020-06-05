@@ -11,7 +11,7 @@
         // Constructor to configure db
         public function __construct(){
             // Import db config file
-            require $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/config/dbconfig.php';
+            require $_SERVER['DOCUMENT_ROOT'] . '/Rock-Paper-Scissor-Game/bin/config/dbconfig.php';
             $this->host = $db_host;
             $this->user_db_name = $user_db;
             $this->username = $db_username;
