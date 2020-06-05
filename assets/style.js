@@ -68,6 +68,10 @@ $('#player-name-save-btn').on('click',function(){
 	$('#play-btn').css('display', 'block');
 	$('#row').css('display', 'none');
 
+	sessionStorage.setItem("p1", player1_name);
+	sessionStorage.setItem("p2", player2_name);
+	sessionStorage.setItem("p3", player3_name);
+	sessionStorage.setItem("p4", player4_name);
 
 });
 
@@ -103,6 +107,18 @@ $('#play-btn').on('click',function(){
         	    window.location.href = "./game.php";
         }
     });
+});
+
+$('#game-close-btn').on('click',function(){
+	$.ajax({
+		url: "./bin/user/destroy-session.php",
+		method: "POST",
+		dataType: "text",
+		data: {},
+		success: function(response) {
+			window.location.href = "./index.php";
+		}
+	});
 });
 
 //GENERATES THE OUTPUT OF PLAYER 1
@@ -268,7 +284,7 @@ $('#player4-btn').on('click',function(){
     });
 
     $.ajax({
-        url: "./bin/user/get-recent-scores.php",
+        url: "./bin/user/get-recent-result.php",
         method: "GET",
         dataType: "json",
         contentType: "application/json",
@@ -327,3 +343,360 @@ $('#play-again-btn').on('click',function() {
 $('#all-results-btn').on('click',function() {
 	window.location.href = './results.php';
 });
+
+$('#result-close-btn').on('click',function(){
+    window.location.href = "./game.php";
+});
+
+player1_name = $('#hidden1').val();
+player2_name = $('#hidden2').val();
+player3_name = $('#hidden3').val();
+player4_name = $('#hidden4').val();
+
+$.ajax({
+        url: "./bin/user/get-all-result.php",
+        method: "GET",
+        dataType: "json",
+        contentType: "application/json",
+        data: {
+          getAllScores: true
+        },
+        success: function(response) {
+
+            if (response.status == 1) {
+
+                var result = response.data.result;
+                var player1_result = response.data.player1_result;
+			    var player2_result = response.data.player2_result;
+                var player3_result = response.data.player3_result;
+			    var player4_result = response.data.player4_result;
+        
+        		if(result[0]) {
+
+        			var i = 0;
+
+        			while(result[0]) {
+                        
+                        var h21 = document.createElement("H2");
+
+                        var text10 = document.createTextNode('Iteration ' + (i+1));
+
+                        h21.appendChild(text10);
+
+        			    var table1 = document.createElement("TABLE");
+			            table1.setAttribute('class', 'details-table');
+
+        			    var text11 = document.createTextNode(sessionStorage.getItem("p1"));
+			            var text12 = document.createTextNode(sessionStorage.getItem("p2"));
+        			    var text13 = document.createTextNode(sessionStorage.getItem("p3"));
+			            var text14 = document.createTextNode(sessionStorage.getItem("p4"));
+        
+        			    var tr11 = document.createElement("TR");
+        			    var tr12 = document.createElement("TR");
+        
+        			    var th11 = document.createElement("TH");
+			            th11.setAttribute('scope', 'row');
+        			    var th12 = document.createElement("TH");
+			            th12.setAttribute('scope', 'row');
+        			    var th13 = document.createElement("TH");
+			            th13.setAttribute('scope', 'row');
+        			    var th14 = document.createElement("TH");
+        			    th14.setAttribute('scope', 'row');
+        
+        			    th11.appendChild(text11);
+			            th12.appendChild(text12);
+        			    th13.appendChild(text13);
+			            th14.appendChild(text14);
+        
+			            tr11.appendChild(th11);
+        			    tr11.appendChild(th12);
+        			    tr11.appendChild(th13);
+			            tr11.appendChild(th14);
+        
+			            var td11 = document.createElement("TD");
+			            var td12 = document.createElement("TD");
+			            var td13 = document.createElement("TD");
+        			    var td14 = document.createElement("TD");
+        
+			            var input11 = document.createElement("INPUT");
+        			    input11.setAttribute('type', 'text');
+			            input11.setAttribute('value', result[i][0]);
+			            input11.setAttribute('disabled', '');
+			            var input12 = document.createElement("INPUT");
+			            input12.setAttribute('type', 'text');
+			            input12.setAttribute('value', result[i][1]);
+        			    input12.setAttribute('disabled', '');
+			            var input13 = document.createElement("INPUT");
+			            input13.setAttribute('type', 'text');
+        			    input13.setAttribute('value', result[i][2]);
+			            input13.setAttribute('disabled', '');
+			            var input14 = document.createElement("INPUT");
+			            input14.setAttribute('type', 'text');
+			            input14.setAttribute('value', result[i][3]);
+			            input14.setAttribute('disabled', '');
+        
+			            td11.appendChild(input11);
+			            td12.appendChild(input12);
+        			    td13.appendChild(input13);
+			            td14.appendChild(input14);
+
+			            tr12.appendChild(td11);
+			            tr12.appendChild(td12);
+			            tr12.appendChild(td13);
+			            tr12.appendChild(td14);
+        
+			            table1.appendChild(tr11);
+			            table1.appendChild(tr12);
+
+			            var h22 = document.createElement("H2");
+
+                        var text20 = document.createTextNode('Leaderboard');
+
+                        h22.appendChild(text20);
+
+                        //TABLE 2 FOR LEADERBOARD
+
+                        var table2 = document.createElement("TABLE");
+			            table2.setAttribute('class', 'details-table');
+
+			            var tr21 = document.createElement("TR");
+			            var tr22 = document.createElement("TR");
+			            var tr23 = document.createElement("TR");
+			            var tr24 = document.createElement("TR");
+			            var tr25 = document.createElement("TR");
+			            var tr26 = document.createElement("TR");
+
+			            var th21 = document.createElement("TH");
+			            th21.setAttribute('scope', 'row');
+        			    var th22 = document.createElement("TH");
+			            th22.setAttribute('scope', 'row');
+        			    var th23 = document.createElement("TH");
+			            th23.setAttribute('scope', 'row');
+        			    var th24 = document.createElement("TH");
+        			    th24.setAttribute('scope', 'row');
+        			    var th25 = document.createElement("TH");
+			            th25.setAttribute('scope', 'row');
+        			    var th26 = document.createElement("TH");
+			            th26.setAttribute('scope', 'row');
+        			    var th27 = document.createElement("TH");
+			            th27.setAttribute('scope', 'row');
+        			    var th28 = document.createElement("TH");
+        			    th28.setAttribute('scope', 'row');
+        			    var th29 = document.createElement("TH");
+			            th29.setAttribute('scope', 'row');
+        			    var th30 = document.createElement("TH");
+			            th30.setAttribute('scope', 'row');
+        			    var th31 = document.createElement("TH");
+			            th31.setAttribute('scope', 'row');
+        			    var th32 = document.createElement("TH");
+        			    th32.setAttribute('scope', 'row');
+        			    var th33 = document.createElement("TH");
+			            th33.setAttribute('scope', 'row');
+        			    var th34 = document.createElement("TH");
+			            th34.setAttribute('scope', 'row');
+        			    var th35 = document.createElement("TH");
+			            th35.setAttribute('scope', 'row');
+        			    var th36 = document.createElement("TH");
+        			    th36.setAttribute('scope', 'row');
+        			    var th37 = document.createElement("TH");
+			            th37.setAttribute('scope', 'row');
+        			    var th38 = document.createElement("TH");
+			            th38.setAttribute('scope', 'row');
+        			    var th39 = document.createElement("TH");
+			            th39.setAttribute('scope', 'row');
+        			    var th40 = document.createElement("TH");
+        			    th40.setAttribute('scope', 'row');
+
+        			    var text21 = document.createTextNode('Totals');
+        			    var text22 = document.createTextNode('Against');
+        			    var text23 = document.createTextNode(sessionStorage.getItem("p1"));
+			            var text24 = document.createTextNode(sessionStorage.getItem("p2"));
+        			    var text25 = document.createTextNode(sessionStorage.getItem("p3"));
+			            var text26 = document.createTextNode(sessionStorage.getItem("p4"));
+			            var text27 = document.createTextNode(sessionStorage.getItem("p1"));
+			            var text28 = document.createTextNode(sessionStorage.getItem("p2"));
+        			    var text29 = document.createTextNode(sessionStorage.getItem("p3"));
+			            var text30 = document.createTextNode(sessionStorage.getItem("p4"));
+			            var text31 = document.createTextNode('Player Wins');
+
+        			    th21.appendChild(text21);
+        			    th24.appendChild(text22);
+        			    th29.appendChild(text23);
+        			    th30.appendChild(text24);
+        			    th31.appendChild(text25);
+        			    th32.appendChild(text26);
+        			    th34.appendChild(text27);
+        			    th36.appendChild(text28);
+        			    th38.appendChild(text29);
+        			    th40.appendChild(text30);
+        			    th35.appendChild(text31);
+
+        			    var td21 = document.createElement("TD");
+			            var td22 = document.createElement("TD");
+			            var td23 = document.createElement("TD");
+        			    var td24 = document.createElement("TD");
+        			    var td25 = document.createElement("TD");
+			            var td26 = document.createElement("TD");
+			            var td27 = document.createElement("TD");
+        			    var td28 = document.createElement("TD");
+        			    var td29 = document.createElement("TD");
+			            var td30 = document.createElement("TD");
+			            var td31 = document.createElement("TD");
+        			    var td32 = document.createElement("TD");
+        			    var td33 = document.createElement("TD");
+			            var td34 = document.createElement("TD");
+			            var td35 = document.createElement("TD");
+        			    var td36 = document.createElement("TD");
+
+        			    var input21 = document.createElement("INPUT");
+        			    input21.setAttribute('type', 'text');
+			            input21.setAttribute('value', '-');
+			            input21.setAttribute('disabled', '');
+			            var input22 = document.createElement("INPUT");
+			            input22.setAttribute('type', 'text');
+			            input22.setAttribute('value', player1_result[i][0]);
+        			    input22.setAttribute('disabled', '');
+			            var input23 = document.createElement("INPUT");
+			            input23.setAttribute('type', 'text');
+        			    input23.setAttribute('value', player1_result[i][1]);
+			            input23.setAttribute('disabled', '');
+			            var input24 = document.createElement("INPUT");
+			            input24.setAttribute('type', 'text');
+			            input24.setAttribute('value', player1_result[i][2]);
+			            input24.setAttribute('disabled', '');
+			            var input25 = document.createElement("INPUT");
+        			    input25.setAttribute('type', 'text');
+			            input25.setAttribute('value', player2_result[i][0]);
+			            input25.setAttribute('disabled', '');
+			            var input26 = document.createElement("INPUT");
+			            input26.setAttribute('type', 'text');
+			            input26.setAttribute('value', '-');
+        			    input26.setAttribute('disabled', '');
+			            var input27 = document.createElement("INPUT");
+			            input27.setAttribute('type', 'text');
+        			    input27.setAttribute('value', player2_result[i][1]);
+			            input27.setAttribute('disabled', '');
+			            var input28 = document.createElement("INPUT");
+			            input28.setAttribute('type', 'text');
+			            input28.setAttribute('value', player2_result[i][2]);
+			            input28.setAttribute('disabled', '');
+			            var input29 = document.createElement("INPUT");
+        			    input29.setAttribute('type', 'text');
+			            input29.setAttribute('value', player3_result[i][0]);
+			            input29.setAttribute('disabled', '');
+			            var input30 = document.createElement("INPUT");
+			            input30.setAttribute('type', 'text');
+			            input30.setAttribute('value', player3_result[i][1]);
+        			    input30.setAttribute('disabled', '');
+			            var input31 = document.createElement("INPUT");
+			            input31.setAttribute('type', 'text');
+        			    input31.setAttribute('value', '-');
+			            input31.setAttribute('disabled', '');
+			            var input32 = document.createElement("INPUT");
+			            input32.setAttribute('type', 'text');
+			            input32.setAttribute('value', player3_result[i][2]);
+			            input32.setAttribute('disabled', '');
+			            var input33 = document.createElement("INPUT");
+        			    input33.setAttribute('type', 'text');
+			            input33.setAttribute('value', player4_result[i][0]);
+			            input33.setAttribute('disabled', '');
+			            var input34 = document.createElement("INPUT");
+			            input34.setAttribute('type', 'text');
+			            input34.setAttribute('value', player4_result[i][1]);
+        			    input34.setAttribute('disabled', '');
+			            var input35 = document.createElement("INPUT");
+			            input35.setAttribute('type', 'text');
+        			    input35.setAttribute('value', player4_result[i][2]);
+			            input35.setAttribute('disabled', '');
+			            var input36 = document.createElement("INPUT");
+			            input36.setAttribute('type', 'text');
+			            input36.setAttribute('value', '-');
+			            input36.setAttribute('disabled', '');
+
+			            td21.appendChild(input21);
+			            td22.appendChild(input22);
+        			    td23.appendChild(input23);
+			            td24.appendChild(input24);
+			            td25.appendChild(input25);
+			            td26.appendChild(input26);
+        			    td27.appendChild(input27);
+			            td28.appendChild(input28);
+			            td29.appendChild(input29);
+			            td30.appendChild(input30);
+        			    td31.appendChild(input31);
+			            td32.appendChild(input32);
+			            td33.appendChild(input33);
+			            td34.appendChild(input34);
+        			    td35.appendChild(input35);
+			            td36.appendChild(input36);
+
+			            tr21.appendChild(th21);
+        			    tr21.appendChild(th22);
+        			    tr21.appendChild(th23);
+			            tr21.appendChild(th24);
+			            tr21.appendChild(th25);
+			            tr21.appendChild(th26);
+
+			            tr22.appendChild(th27);
+        			    tr22.appendChild(th28);
+        			    tr22.appendChild(th29);
+			            tr22.appendChild(th30);
+			            tr22.appendChild(th31);
+			            tr22.appendChild(th32);
+
+			            tr23.appendChild(th33);
+        			    tr23.appendChild(th34);
+        			    tr23.appendChild(td21);
+			            tr23.appendChild(td22);
+			            tr23.appendChild(td23);
+			            tr23.appendChild(td24);
+
+			            tr24.appendChild(th35);
+        			    tr24.appendChild(th36);
+        			    tr24.appendChild(td25);
+			            tr24.appendChild(td26);
+			            tr24.appendChild(td27);
+			            tr24.appendChild(td28);
+
+			            tr25.appendChild(th37);
+        			    tr25.appendChild(th38);
+        			    tr25.appendChild(td29);
+			            tr25.appendChild(td30);
+			            tr25.appendChild(td31);
+			            tr25.appendChild(td32);
+
+			            tr26.appendChild(th39);
+        			    tr26.appendChild(th40);
+        			    tr26.appendChild(td33);
+			            tr26.appendChild(td34);
+			            tr26.appendChild(td35);
+			            tr26.appendChild(td36);
+
+			            table2.appendChild(tr21);
+			            table2.appendChild(tr22);
+			            table2.appendChild(tr23);
+			            table2.appendChild(tr24);
+			            table2.appendChild(tr25);
+			            table2.appendChild(tr26);
+
+                        document.getElementById('result-page').appendChild(h21);
+			            document.getElementById('result-page').appendChild(table1);
+			            document.getElementById('result-page').appendChild(h22);
+			            document.getElementById('result-page').appendChild(table2);
+
+			            i++;
+			        }
+
+			    }
+
+			    else {
+			    	var h2 = document.createElement("H2");
+			    	var text = document.createTextNode('No Results');
+
+			    	h2.appendChild(text);
+
+			    	document.getElementById('result-page').appendChild(h2);
+			    }
+            }
+        }
+    });

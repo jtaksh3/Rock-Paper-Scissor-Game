@@ -143,7 +143,7 @@ class User
         // Execute query
         $stmt->execute();
         // Fetch a row
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(PDO::FETCH_NUM);
 
         return $result;
     }
@@ -156,7 +156,7 @@ class User
         // Execute query
         $stmt->execute();
         // Fetch a row
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(PDO::FETCH_NUM);
 
         return $result;
     	
@@ -170,7 +170,7 @@ class User
         // Execute query
         $stmt->execute();
         // Fetch a row
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(PDO::FETCH_NUM);
 
         return $result;
     } 
@@ -183,7 +183,7 @@ class User
         // Execute query
         $stmt->execute();
         // Fetch a row
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(PDO::FETCH_NUM);
 
         return $result;
 
@@ -244,27 +244,27 @@ class User
         // Prepare query statement
         $result_stmt = $this->conn->prepare($result_query);
         $result_stmt->execute();
-        $result = $result_stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $result_stmt->fetchAll(PDO::FETCH_NUM);
 
         // Prepare query statement
         $stmt1 = $this->conn->prepare($query1);
         $stmt1->execute();
-        $player1_result = $stmt1->fetch(PDO::FETCH_ASSOC);
+        $player1_result = $stmt1->fetchAll(PDO::FETCH_NUM);
 
         // Prepare query statement
         $stmt2 = $this->conn->prepare($query2);
         $stmt2->execute();
-        $player2_result = $stmt2->fetch(PDO::FETCH_ASSOC);
+        $player2_result = $stmt2->fetchAll(PDO::FETCH_NUM);
 
         // Prepare query statement
         $stmt3 = $this->conn->prepare($query3);
         $stmt3->execute();
-        $player3_result = $stmt3->fetch(PDO::FETCH_ASSOC);
+        $player3_result = $stmt3->fetchAll(PDO::FETCH_NUM);
 
         // Prepare query statement
         $stmt4 = $this->conn->prepare($query4);
         $stmt4->execute();
-        $player4_result = $stmt4->fetch(PDO::FETCH_ASSOC);
+        $player4_result = $stmt4->fetchAll(PDO::FETCH_NUM);
 
         return array(
             "result" => $result,

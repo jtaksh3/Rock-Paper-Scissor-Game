@@ -32,6 +32,7 @@ $player4_name = $_SESSION['player4_name'];
         
         <h1>Rock-Paper-Scissor<span> Game</span></h1>
         <div class="game-page" id="game-page">
+        	<button title="Close" class="close-btn" id="game-close-btn">&times;</button>
         	<div class="container">
         	    <div class="panel-wrapper">
 				    <div class="panel-head" id="game-player1-name">
@@ -97,7 +98,7 @@ $player4_name = $_SESSION['player4_name'];
 		    	</table>
 		    	<h2>Leaderboard</h2>
 		    	<table id="personal-details" class="details-table">
-		    	    	<tr>
+		    	    <tr>
 				    	<th scope="row">Totals</th>
 				    	<th scope="row"></th>
 				    	<th scope="row"></th>
@@ -143,12 +144,17 @@ $player4_name = $_SESSION['player4_name'];
 			    		<td><input type="text" id="4player1" placeholder="Player 1" disabled value="" required></td>
 			    		<td><input type="text" id="4player2" placeholder="Player 2" disabled value="" required></td>
 			    		<td><input type="text" id="4player3" placeholder="Player 3" disabled value="" required></td>
-			    		<td><input type="text" value="-" disabled required></td>
+			    		<td><input type="text" value="" disabled required></td>
 			    	</tr>
 			    </table>
 		    </div>
 		    <button class="all-results-btn" id="all-results-btn">All Results</button>
 		</div>
+
+		<input type="hidden" id="hidden1" value="<?php echo $player1_name; ?>">
+        <input type="hidden" id="hidden1" value="<?php echo $player2_name; ?>">
+        <input type="hidden" id="hidden1" value="<?php echo $player3_name; ?>">
+        <input type="hidden" id="hidden1" value="<?php echo $player4_name; ?>">
 
 		<script type="text/javascript" src="./assets/style.js"></script>
 

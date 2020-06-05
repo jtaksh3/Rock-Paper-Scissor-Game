@@ -85,7 +85,7 @@ h1 span {
 	animation:animatezoom 1s;
 }
 
-.front-page .row .player-name-close-btn {
+.close-btn {
 	float: right;
 	background: transparent;
 	border: none;
@@ -96,7 +96,7 @@ h1 span {
 	margin-right: 20px;
 	opacity: 0.7;
 }
-.front-page .row .player-name-close-btn:hover {
+.close-btn:hover {
 	opacity: 1;
 }
 
@@ -269,24 +269,24 @@ h1 span {
 	animation:animatetop 1s;
 }
 
-.game-page .current-result-section h2 {
+h2 {
 	text-align: center;
 	color: #fff;
 	margin: 40px 0px 0px 0px;
 }
 
-.game-page .current-result-section .details-table {
+.details-table {
 	border-collapse: collapse;
 	margin: 20px auto 0px auto;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.game-page .current-result-section .details-table tr:nth-child(odd) {
+.details-table tr:nth-child(odd) {
 	border-top: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
 }
 
-.game-page .current-result-section .details-table th {
+.details-table th {
 	padding: 15px;
 	text-align: center;
 	font-size: 18px;
@@ -295,13 +295,13 @@ h1 span {
 	font-weight: 400;
 }
 
-.game-page .current-result-section .details-table td {
+.details-table td {
 	font-size: 16px;
 	padding: 15px;
 	background: #fff;
 }
 
-.game-page .current-result-section .details-table input {
+.details-table input {
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
 	font-weight: 600px;

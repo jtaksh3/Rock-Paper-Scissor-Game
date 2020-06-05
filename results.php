@@ -15,6 +15,7 @@
         
         <h1>Rock-Paper-Scissor<span> Game</span></h1>
         <div class="result-page" id="result-page">
+        	<button title="Close" class="close-btn" id="result-close-btn">&times;</button>
 		</div>
     
     <script type="text/javascript" src="./assets/style.js"></script> 

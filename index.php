@@ -30,7 +30,7 @@ if (isset($_SESSION['uniqueID']) && isset($_SESSION['player1_name']) && isset($_
         <div class="front-page" id="front-page">
             <p>Want to Enter Player Name Manually <button class="player-name-btn" id="player-name-btn">Click Here</button></p>
             <div class="row" id="row">
-                <button title="Close" class="player-name-close-btn" id="player-name-close-btn">&times;</button>
+                <button title="Close" class="close-btn" id="player-name-close-btn">&times;</button>
                 <div class='col adjust'>
                     <label>First Player Name</label>
                     <input type="text" placeholder="Default (Player 1)" id="player1-name">
