@@ -1,5 +1,7 @@
 <?php
 
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/Rock-Paper-Scissor-Game/bin/config/database.php';
+
     if (isset($_POST['player1_name']) && isset($_POST['player2_name']) && isset($_POST['player3_name']) 
         && isset($_POST['player4_name'])) {
 

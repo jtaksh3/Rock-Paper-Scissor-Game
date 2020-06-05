@@ -1,7 +1,7 @@
 <?php
 
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/config/database.php';
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/rock-paper-scissor-game/bin/user/user.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/Rock-Paper-Scissor-Game/bin/config/database.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/Rock-Paper-Scissor-Game/bin/user/user.php';
 
     session_start();
     if (!isset($_SESSION['uniqueID']) || !isset($_SESSION['player1_name']) || !isset($_SESSION['player2_name'])
